@@ -8,14 +8,14 @@ const {
   eliminarTarea,
 } = require("../controllers/tasks.controllers");
 
-router.post("/tareas", crearTarea);
+router.post("/tasks", crearTarea);
 
-router.get("/tareas", obtenerTareas);
+router.get("/tasks", obtenerTareas);
 
-router.get("/tareas/:id", obtenerTareaId);
+router.get("/task/:id", obtenerTareaId);
 
-router.put("/tareas/:id", editarTarea);
+router.put("/task/:id", editarTarea);
 
-router.delete("/tareas/:id", eliminarTarea);
+router.delete("/task/:id", eliminarTarea);
 
 module.exports = router;

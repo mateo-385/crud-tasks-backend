@@ -1,5 +1,7 @@
+//Importacion de modulos
 const express = require("express")
 
+//Configuraciones
 const app = express()
 const PORT = 3000
 
