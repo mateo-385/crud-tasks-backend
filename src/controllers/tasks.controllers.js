@@ -1,8 +1,8 @@
-const { connectDB } = require("../db/database");
+import { connectDB } from "../db/database.js";
 
-const ctrl = {};
 
-ctrl.obtenerTareas = async (req, res) => {
+
+const obtenerTareas = async (req, res) => {
     try {
         const connection = await connectDB();
         const [results] = await connection.query("SELECT * FROM task");
@@ -12,7 +12,7 @@ ctrl.obtenerTareas = async (req, res) => {
     }
 };
 
-ctrl.crearTarea = async (req, res) => {
+const crearTarea = async (req, res) => {
     const { title, description, isComplete } = req.body;
     //Controles
     if (!title.trim() || !description.trim() || title.length > 255 || typeof isComplete !== "boolean") {
@@ -37,7 +37,7 @@ ctrl.crearTarea = async (req, res) => {
     }
 };
 
-ctrl.obtenerTareaId = async (req, res) => {
+const obtenerTareaId = async (req, res) => {
     const id = req.params.id;
     try {
         const connection = await connectDB();
@@ -54,7 +54,7 @@ ctrl.obtenerTareaId = async (req, res) => {
     }
 };
 
-ctrl.editarTarea = async (req, res) => {
+const editarTarea = async (req, res) => {
     const id = req.params.id;
     const { title, description } = req.body;
     try {
@@ -73,7 +73,7 @@ ctrl.editarTarea = async (req, res) => {
     }
 };
 
-ctrl.eliminarTarea = async (req, res) => {
+const eliminarTarea = async (req, res) => {
     const id = req.params.id;
     try {
         const connection = await connectDB();
@@ -91,4 +91,4 @@ ctrl.eliminarTarea = async (req, res) => {
     }
 };
 
-module.exports = ctrl;
+export { obtenerTareas, crearTarea, obtenerTareaId, editarTarea, eliminarTarea };
