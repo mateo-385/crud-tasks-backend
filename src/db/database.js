@@ -1,6 +1,6 @@
 import { createConnection } from "mysql2/promise"
 
-const connectDB = async () => {
+export const connectDB = async () => {
     return await createConnection
         ({
             host: "localhost",
@@ -10,6 +10,3 @@ const connectDB = async () => {
         })
 }
 
-export {
-    connectDB
-}

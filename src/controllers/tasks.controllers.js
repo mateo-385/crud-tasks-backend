@@ -1,7 +1,5 @@
 import { connectDB } from "../db/database.js";
 
-
-
 const obtenerTareas = async (req, res) => {
     try {
         const connection = await connectDB();
@@ -14,22 +12,11 @@ const obtenerTareas = async (req, res) => {
 
 const crearTarea = async (req, res) => {
     const { title, description, isComplete } = req.body;
-    //Controles
-    if (!title.trim() || !description.trim() || title.length > 255 || typeof isComplete !== "boolean") {
-        let msg = "El título y la descripción no pueden estar vacíos.";
-        if (typeof isComplete !== "boolean") {
-            msg = "Tipo de dato incorrecto"
-        }
-        if (title.length > 255) {
-            msg = "El título no puede tener más de 255 caracteres";
-        }
-        return res.status(400).send(msg);
-    }
     try {
         const connection = await connectDB();
         await connection.query(
-            "INSERT INTO task (title,description) VALUES (?,?)",
-            [title, description]
+            "INSERT INTO task (title,description,isComplete) VALUES (?,?,?)",
+            [title, description, isComplete]
         );
         return res.status(201).send("Tarea creada correctamente");
     } catch (error) {

@@ -24,7 +24,7 @@ npm run dev
 
 #### [http://localhost:3000](http://localhost:3000)
 
-- Para cambiar el puerto ir a la linea 6 del archivo src/app.js
+- Para cambiar el puerto ir a la linea 8 del archivo src/app.js
 
 ```javascript
 const PORT = 3000;
