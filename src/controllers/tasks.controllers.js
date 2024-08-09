@@ -28,8 +28,8 @@ ctrl.crearTarea = async (req, res) => {
     try {
         const connection = await connectDB();
         await connection.query(
-            "INSERT INTO task (title,description) VALUES (?,?)",
-            [title, description]
+            "INSERT INTO task (title,description, isComplete) VALUES (?,?,?)",
+            [title, description, isComplete]
         );
         return res.status(201).send("Tarea creada correctamente");
     } catch (error) {
